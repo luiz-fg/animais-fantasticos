@@ -1,0 +1,80 @@
+/* 
+DROPDOWN SOMENTE COM CSS
+[data-dropdown] {
+  display: inline-block;
+  position: relative;
+}
+
+[data-dropdown] .dropdown-menu {
+  display: none;
+  position: absolute;
+  background: #e54;
+  border: 2px solid #222;
+  z-index: 2;
+}
+
+.dropdown-menu a:hover {
+  color: #fff;
+}
+
+[data-dropdown]:hover .dropdown-menu {
+  display: block;
+} */
+
+[data-dropdown] {
+  position: relative;
+}
+
+[data-dropdown] .dropdown-menu {
+  display: none;
+}
+
+[data-dropdown]:hover .dropdown-menu,
+[data-dropdown].active .dropdown-menu {
+  display: block;
+  animation: show-up 0.3s forwards;
+}
+
+@keyframes show-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 30px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0px, 0);
+  }
+}
+
+.dropdown-menu {
+  position: absolute;
+  background: #e54;
+  border: 2px solid #222;
+  top: 45px;
+  z-index: 2;
+}
+
+.dropdown-menu::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -10px;
+  width: 0px;
+  height: 0px;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #e54;
+
+  /* OUTRA FORMA DE FAZER
+  width: 15px;
+  height: 15px;
+  border: 2px solid #222;
+  border-right: transparent;
+  border-bottom: transparent;
+  background: #e54;
+  transform: rotate(45deg); */
+}
+
+.dropdown-menu a:hover {
+  color: #fff;
+}
